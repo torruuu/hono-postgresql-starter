@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const EnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'production']).default('development'),
-  PORT: z.coerce.number().default(4000),
+  PORT: z.coerce.number(),
 })
 
 export type env = z.infer<typeof EnvSchema>
@@ -18,7 +18,7 @@ try {
 } catch (e) {
   const error = e as z.ZodError
   console.error('Invalid environment variables:')
-  console.error(z.treeifyError(error))
+  console.error(z.prettifyError(error))
   process.exit(1)
 }
 
