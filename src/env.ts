@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const EnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'production']).default('development'),
-  PORT: z.coerce.number(),
+  PORT: z.coerce.number().default(4000),
 })
 
 export type env = z.infer<typeof EnvSchema>
