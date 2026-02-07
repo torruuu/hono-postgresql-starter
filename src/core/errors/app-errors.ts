@@ -12,7 +12,7 @@ export const APP_ERRORS = {
   },
   not_found: {
     status: Status.NOT_FOUND,
-    message: 'Not found',
+    message: Phrase.NOT_FOUND,
   },
 } as const
 
