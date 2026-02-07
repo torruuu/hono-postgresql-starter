@@ -19,6 +19,7 @@
   "dependencies": {
     "@hono/node-server": "^1.19.9",
     "@hono/zod-openapi": "^1.2.1",
+    "@scalar/hono-api-reference": "^0.9.40",
     "hono": "^4.11.7",
     "pino": "^10.3.0",
     "pino-http": "^11.0.0",
