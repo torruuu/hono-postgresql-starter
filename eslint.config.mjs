@@ -41,7 +41,9 @@ export default [
     files: ['**/*.ts'],
     languageOptions: {
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: ['prisma.config.ts'],
+        },
         tsconfigRootDir: import.meta.dirname,
       },
     },
