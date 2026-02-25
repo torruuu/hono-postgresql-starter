@@ -4,7 +4,7 @@ import type { Env } from 'hono'
 
 const defaultHook: Hook<unknown, Env, string, unknown> = (result, c) => {
   if (!result.success) {
-    return httpError(c, 'validation_error')
+    return httpError(c, 'validation_error', { issues: result.error.issues })
   }
 }
 

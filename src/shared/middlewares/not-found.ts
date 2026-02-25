@@ -3,7 +3,7 @@ import { httpError } from '@/core/errors/http-error-handler.js'
 import type { NotFoundHandler } from 'hono'
 
 const notFound: NotFoundHandler = (c) => {
-  return httpError(c, 'not_found', `${NOT_FOUND_MESSAGE} - ${c.req.path}`)
+  return httpError(c, 'not_found', { message: `${NOT_FOUND_MESSAGE} - ${c.req.path}` })
 }
 
 export default notFound
