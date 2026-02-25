@@ -1,6 +1,7 @@
-import eslint from '@eslint/js'
+import js from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import eslintPluginPrettier from 'eslint-plugin-prettier/recommended'
+import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
 const RULES = {
@@ -14,17 +15,16 @@ const unusedVarsConfig = {
   varsIgnorePattern: '^_',
 }
 
-export default [
+export default defineConfig([
   {
     ignores: ['dist/', 'node_modules/'],
   },
-  // Configuraciones base (se aplican a todos los archivos)
-  eslint.configs.recommended,
   eslintConfigPrettier,
   eslintPluginPrettier,
-  // Configuración específica para JavaScript
   {
     files: ['**/*.js'],
+    plugins: { js },
+    extends: ['js/recommended'],
     rules: {
       'no-unused-vars': [RULES.ERROR, unusedVarsConfig],
       'array-callback-return': [RULES.OFF, { checkForEach: true }],
@@ -32,7 +32,6 @@ export default [
       'no-undef': RULES.OFF,
     },
   },
-  // Configuración específica para TypeScript
   ...tseslint.configs.recommended.map((config) => ({
     ...config,
     files: ['**/*.ts'],
@@ -51,4 +50,4 @@ export default [
       '@typescript-eslint/no-unused-vars': [RULES.ERROR, unusedVarsConfig],
     },
   },
-]
+])
