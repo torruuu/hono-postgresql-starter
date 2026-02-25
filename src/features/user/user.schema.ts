@@ -1,3 +1,4 @@
+import { zIntParam } from '@/shared/utils/validators.js'
 import { z } from 'zod'
 
 export const UserSchema = z.object({
@@ -9,8 +10,5 @@ export const UserSchema = z.object({
 export const UserListSchema = z.array(UserSchema)
 
 export const UserIdParamSchema = z.object({
-  id: z.preprocess(
-    (value) => (value == null || value === '' ? undefined : Number(value)),
-    z.number().int(),
-  ),
+  id: zIntParam(),
 })
