@@ -13,8 +13,11 @@ datasource db {
   provider = "postgresql"
 }
 
-model User { 
-  id    Int     @id @default(autoincrement()) 
-  email String  @unique
-  name  String?
+model Product {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  description String   @db.Text
+  price     Decimal  @db.Decimal(10, 2)
+  stock     Int      @db.Integer
+  category  String   @db.VarChar(255)
 }
