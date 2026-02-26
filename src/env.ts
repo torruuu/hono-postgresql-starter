@@ -7,12 +7,12 @@ if (process.env.NODE_ENV !== 'production') {
 const EnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'production']).default('development'),
   PORT: z.coerce.number().default(4000),
-  DATABASE_URL: z.string(),
-  DATABASE_HOST: z.string(),
-  DATABASE_USER: z.string(),
-  DATABASE_PASSWORD: z.string(),
-  DATABASE_NAME: z.string(),
-  DATABASE_PORT: z.coerce.number(),
+  DB_URL: z.string(),
+  DB_HOST: z.string(),
+  DB_USER: z.string(),
+  DB_PASSWORD: z.string(),
+  DB_NAME: z.string(),
+  DB_PORT: z.coerce.number(),
 })
 
 export type env = z.infer<typeof EnvSchema>

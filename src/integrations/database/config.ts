@@ -3,11 +3,11 @@ import env from '@/env.js'
 import { PrismaPg } from '@prisma/adapter-pg'
 
 const adapter = new PrismaPg({
-  host: env.DATABASE_HOST,
-  user: env.DATABASE_USER,
-  password: env.DATABASE_PASSWORD,
-  database: env.DATABASE_NAME,
-  port: env.DATABASE_PORT,
+  host: env.DB_HOST,
+  user: env.DB_USER,
+  password: env.DB_PASSWORD,
+  database: env.DB_NAME,
+  port: env.DB_PORT,
 })
 const prisma = new PrismaClient({ adapter })
 
