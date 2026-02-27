@@ -10,6 +10,7 @@
     "dev": "tsx watch src/index.ts",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky || true",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",

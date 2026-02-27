@@ -13,7 +13,7 @@ const onError: ErrorHandler = (err, c) => {
   const errorCode: AppErrorCode =
     currentCode && currentCode in APP_ERRORS ? currentCode : 'internal_server_error'
 
-  const env = c.env?.NODE_ENV || envConfig.NODE_ENV
+  const env = envConfig.NODE_ENV
   return c.json(
     {
       code: errorCode,
