@@ -1,0 +1,39 @@
+services:
+  app:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      DB_URL: "postgresql://postgres:pst123@db:5432/hono_template?schema=public"
+      DB_USER: postgres
+      DB_PASSWORD: pst123
+      DB_NAME: hono_template
+      DB_HOST: db
+      DB_PORT: 5432
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - api_net
+
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pst123
+      POSTGRES_DB: hono_template
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - api_net
+
+networks:
+  api_net:
+
+volumes:
+  postgres_data:
